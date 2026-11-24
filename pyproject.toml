@@ -1,17 +1,27 @@
 [project]
-name = "llm-sdk"
+name = "call-me-maybe"
 version = "0.1.0"
-description = "LLM SDK for local model inference"
+description = "A function calling tool that translates natural language into structured function arguments using LLM"
+readme = "README.md"
+authors = [
+    { name = "Fernanda Bachman", email = "fe.bachman@outlook.com" }
+]
 requires-python = ">=3.10"
 dependencies = [
-    "torch>=2.0.0",
-    "transformers>=4.40.0",
-    "huggingface-hub>=0.20.0",
+    "numpy>=2.2.6",
+    "pydantic>=2.14.1",
 ]
 
 [build-system]
-requires = ["hatchling"]
-build-backend = "hatchling.build"
+requires = ["uv_build>=0.12.7,<0.13.0"]
+build-backend = "uv_build"
 
-[tool.hatch.build.targets.wheel]
-packages = ["llm_sdk"]
+[dependency-groups]
+dev = [
+    "flake8>=7.4.1",
+    "mypy>=2.4.0",
+    "pytest>=9.1.1",
+]
+
+[tool.uv]
+package = false
